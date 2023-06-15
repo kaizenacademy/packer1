@@ -1,3 +1,19 @@
+template = '''
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: packer
+  name: packer
+spec:
+  containers:
+  - command:
+    - sleep
+    - "3600"
+    image: hashicorp/packer
+    name: packer
+    '''
+
 def buildNumber = env.BUILD_NUMBER
 
 if (env.BRANCH == "dev" ) {
