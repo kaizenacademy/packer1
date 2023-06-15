@@ -1,0 +1,22 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-east-2",
+      "source_ami_filter": {
+        "most_recent": true,
+        "owners": ["099720109477"],
+        "filters": {
+          "name": "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*",
+          "virtualization-type": "hvm"
+        }
+      },
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "My Custom AMI",
+      "tags": {
+        "source": "Packer"
+      }
+    }
+  ]
+}
