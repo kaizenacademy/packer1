@@ -34,7 +34,7 @@ source "amazon-ebs" "example" {
   region        = var.aws_region
   instance_type = var.instance_type
   ssh_username  = "ubuntu"
-  ami_name = "my-ami-${jenkins-build-number}"
+  ami_name = "my-ami-${jenkins_build_number}"
 
   source_ami_filter {
     filters = {
