@@ -1,35 +1,13 @@
-template = '''
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    run: packer
-  name: packer
-spec:
-  containers:
-  - command:
-    - sleep
-    - "3600"
-    image: hashicorp/packer
-    name: packer
-    '''
-
 def buildNumber = env.BUILD_NUMBER
 
-properties([
-    parameters(
-        [choice(choices: ['dev', 'qa', 'stage', 'prod'], name: 'environment')
-        ])
-        ])
-
-if (params.environment == "dev" ) {
+if (env.BRANCH == "dev" ) {
     region = "us-east-1"
 }
-else if (params.environment == "qa" ) {
+else if (env.BRANCH == "qa" ) {
     region = "us-east-2"
 }
 
-else if (params.environment == "stage" ) {
+else if (env.BRANCH == "master" ) {
     region = "us-west-1"
 }
 
